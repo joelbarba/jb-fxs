@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description" content="Sound FXs Buttons"/>
+  <meta charset="utf-8">
+  <title>JB FXs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Joel Barba">
+  <style>
+    body {
+      background: black;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      /* margin: 0 30%; */
+    }
+    .btn {
+      padding: 18px 10px;
+      font-size: 14px;
+      border-radius: 10px;
+      background: lightseagreen;
+      border-color: white;
+      color: white;
+      font-weight: bold;
+      margin: 10px;
+      min-width: 100px;
+    }
+    .stop { 
+      width: calc(100% - 15px);
+      background: red;
+    }
+  </style>
+</head>
+
+<body>
+  
+<h1>JB FXs</h1>
+<div id="containter" class="container">
+  <!-- <button class="btn" onclick="playMusic('alert.mp3')"      >alert</button>
+  <button class="btn" onclick="playMusic('applause.mp3')"   >applause</button>
+  <button class="btn" onclick="playMusic('buzMec.mp3')"     >buzMec</button>
+  <button class="btn" onclick="playMusic('drumRoll.mp3')"   >drumRoll</button>
+  <button class="btn" onclick="playMusic('tense.mp3')"      >tense</button>
+  <button class="btn" onclick="playMusic('hahaha.mp3')"     >hahaha</button>
+  <button class="btn" onclick="playMusic('whip.mp3')"       >whip</button>
+  <button class="btn" onclick="playMusic('tada.mp3')"       >tada</button>
+  <button class="btn" onclick="playMusic('baDunTss.mp3')"   >baDuTss</button>
+  <button class="btn" onclick="playMusic('failMoc.mp3')"    >failMoc</button>
+  <button class="btn" onclick="playMusic('renfe.mp3')"      >renfe</button>
+  <button class="btn" onclick="playMusic('xanXnXn.mp3')"    >xanXnXn</button>
+  <button class="btn" onclick="playMusic('inception.mp3')"  >inception</button>
+  <button class="btn" onclick="playMusic('shock.mp3')"      >shock</button>
+  <button class="btn" onclick="playMusic('heaven.mp3')"     >heaven</button>
+  <button class="btn" onclick="playMusic('bell.mp3')"       >bell</button>
+  <button class="btn" onclick="playMusic('2hLater.mp3')"    >later</button>
+  <button class="btn" onclick="playMusic('gameOver.mp3')"   >gOver</button>
+  <button class="btn" onclick="playMusic('badJoke.mp3')"    >badJoke</button>
+  <button class="btn" onclick="playMusic('crickets.mp3')"   >crickets</button>
+  <button class="btn" onclick="playMusic('dolphin.mp3')"    >dolphin</button>
+  <button class="btn" onclick="playMusic('pGood.mp3')"      >pGood</button>
+  <button class="btn" onclick="playMusic('xan.mp3')"        >xan</button>
+  <button class="btn" onclick="playMusic('dramFart.mp3')"   >dramFart</button>
+  <button class="btn" onclick="playMusic('wow.mp3')"        >wow</button>
+  <button class="btn" onclick="playMusic('terminator.mp3')" >termin</button>
+  <button class="btn" onclick="playMusic('explosion.mp3')"  >explota</button>
+  <button class="btn" onclick="playMusic('ohNo.mp3')"       >ohNo</button>
+  <button class="btn" onclick="playMusic('renfe2.mp3', event)"     >renfe2</button> -->
+  <!-- <button id="btn1" class="btn" onclick="playMusic('renfe3.mp3', event, 'click')" ontouchstart="playMusic('renfe3.mp3', event)"     >renfe2</button> -->
+  <!-- <div id="btn1" class="btn"     >renfe3</div> -->
+  <!-- <button class="btn" onclick="playMusic('poing.mp3')"      >poing</button> -->
+</div>
+<button class="btn stop" onclick="stopMusic()">STOP</button>
+
+<!-- <audio controls autoplay="autoplay">
+  <source src="renfe3.mp3" type="audio/mpeg">
+</audio> -->
+
+<script>
+  let isIni = true;
+  const fxs = [
+  'alert.mp3',      'applause.mp3',     'buzMec.mp3',
+  'drumRoll.mp3',   'tense.mp3',        'hahaha.mp3',
+  'whip.mp3',       'tada.mp3',         'baDunTss.mp3',
+  'failMoc.mp3',    'renfe.mp3',        'xanXnXn.mp3',
+  'inception.mp3',  'shock.mp3',        'heaven.mp3',
+  'bell.mp3',       '2hLater.mp3',      'gameOver.mp3',
+  'badJoke.mp3',    'crickets.mp3',     'dolphin.mp3',
+  'pGood.mp3',      'xan.mp3',          'dramFart.mp3',
+  'wow.mp3',        'terminator.mp3',   'explosion.mp3',
+  'ohNo.mp3',       'renfe2.mp3',       'renfe3.mp3',
+  ];
+
+  const containter = document.getElementById('containter');
+  fxs.forEach(fx => {
+    const btn = document.createElement("button");
+    btn.setAttribute('class', 'btn');
+    btn.textContent = fx.split('.')[0];
+    containter.appendChild(btn);
+    btn.addEventListener('click', function() {
+      if (isIni) {
+        btn.style = 'background: greenyellow';
+        setTimeout(() => btn.style = '', 500);
+        (new Audio(fx)).play();
+        isIni = false;
+      }
+    });
+    btn.addEventListener('touchstart', function() {
+      if (!isIni) {
+        btn.style = 'background: greenyellow';
+        setTimeout(() => btn.style = '', 500);
+        (new Audio(fx)).play();
+      }
+    });
+  });
+
+  
+  function playMusic(code, event) {
+    event.target.style = 'background: greenyellow';
+    setTimeout(() => event.target.style = '', 500);
+    if (code) { 
+      const audio = new Audio(code);
+      audio.play(); 
+    }
+  }
+  function stopMusic(code) {
+    location.reload();
+  }
+</script>
+
+</body>
+</html>
+
+
+
