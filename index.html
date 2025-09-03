@@ -107,7 +107,7 @@
       if (isIni) {
         btn.style = 'background: greenyellow';
         setTimeout(() => btn.style = '', 500);
-        (new Audio(fx)).play();
+        (new Audio('sounds/' + fx)).play();
         isIni = false;
       }
     });
@@ -115,7 +115,7 @@
       if (!isIni) {
         btn.style = 'background: greenyellow';
         setTimeout(() => btn.style = '', 500);
-        (new Audio(fx)).play();
+        (new Audio('sounds/' + fx)).play();
       }
     });
   });
